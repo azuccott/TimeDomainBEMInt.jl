@@ -1,5 +1,9 @@
 module TimeDomainBEMInt
 
-# Write your package code here.
+include("integrals.jl")
+include("inttriangleRminus4.jl")
+include("contour2.jl")
+
+export inttriangletriangle
 
 end
