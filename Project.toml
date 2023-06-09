@@ -3,6 +3,13 @@ uuid = "0303f91b-5811-4998-82cd-e0687f55e8f9"
 authors = ["Alessandro Zuccotti"]
 version = "1.0.0-DEV"
 
+[deps]
+BlockArrays = "8e7c35d0-a365-5155-bbbb-fb81a777f24e"
+CompScienceMeshes = "3e66a162-7b8c-5da0-b8f8-124ecd2c3ae1"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Polynomials = "f27b6e38-b328-58d1-80ce-0feddd5e7a45"
+WiltonInts84 = "a3e2863e-c0ee-5ff6-a523-307a4cdc8724"
+
 [compat]
 julia = "1"
 

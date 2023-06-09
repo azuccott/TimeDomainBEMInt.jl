@@ -1,5 +1,7 @@
 module TimeDomainBEMInt
 
+using CompScienceMeshes
+
 using WiltonInts84
 
 using LinearAlgebra

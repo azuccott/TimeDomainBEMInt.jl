@@ -228,12 +228,12 @@ function intcoinctriangles(a1,a2,a3,t1,t2)
     return I
 end
 
-intcoinctriangles(v1′,v2′,v3′,0,0.4)
-quadrule4dtriang(v1′,v2′,v3′,v1′,v2′,v3′,0.0000000000001,0.4)
+#intcoinctriangles(v1′,v2′,v3′,0,0.4)
+#quadrule4dtriang(v1′,v2′,v3′,v1′,v2′,v3′,0.0000000000001,0.4)
 
 
 
-#test da cancellare
+#=test da cancellare
 v3 = point( 0.0, 0.0, 0.0) #r3 #attenzione hai cambiato questi punti rispetto allaltro file
 
 v1 = point(1.0, 0.0, 0.0) #r1
@@ -246,18 +246,17 @@ v3′ = point(3.622579672754069, 4.478943189230791, -8.174104502769225) #r3'
 v1′ =point(5.370603720688417, 3.683103988470699, -7.58889719823895) #r1'
 
 v2′ = point( 3.851213402629311, 2.5141835154553185, -8.879585383227141) #r2'
+=#
 
-vc=point()
+#intcoinctriangles(v1,v2,v3,0.00000001,0.7)
+#quadrule4dtriang(v1,v2,v3,v1,v2,v3,0.0,0.7)
 
-intcoinctriangles(v1,v2,v3,0.00000001,0.7)
-quadrule4dtriang(v1,v2,v3,v1,v2,v3,0.0,0.7)
+#wiltonints(v1,v2,v3,v4,Val{1})[1][2]
 
-wiltonints(v1,v2,v3,v4,Val{1})[1][2]
-
-v4=point(0.25,0.25,0.0)
+#v4=point(0.25,0.25,0.0)
 
 
-inttriangletriangleadjacent(v1,v2,v3,v1,v2,v3,0.1,30.0)
+#inttriangletriangleadjacent(v1,v2,v3,v1,v2,v3,0.1,30.0)
 
 function quadrule2dtriang(r1,r2,r3,rp,t2)
     T = simplex(r1, r2, r3)
@@ -360,66 +359,12 @@ function inttriangtimezero(r1,r2,r3,t2) #definisce lintegral wiltonint di 1/R fr
 end
 
 
-function quadrule4dtriang(r1,r2,r3,r1′,r2′,r3′,t1,t2)
-    T = simplex(r1, r2, r3)
-
-    S = simplex(r1′, r2′, r3′)
-
-    #testing quadrature rules
-
-    #qpsT = quadpoints(T,13)
-
-     qpsS = quadpoints(S,13)
-
-    #=function f(p)
-
-        x = cartesian(p)
-
-        y =
-
-        R = norm(x-y)
+#quadrule4dtriang(v1,v2,v3,v1,v2,v3,0.0,0.4)
 
 
-            if   t1 ≤ R ≤ t2
+#inttriangtimezero(v2,v3,v1,1.1)
 
-                return 1/R
-
-            else
-
-                return zero(R)
-
-            end
-
-        end=#
-
-    #result 4d quadrule
-
-    r = 0.0
-
-   # for qpT in qpsT
-
-       # pT, wT = qpT
-
-        for qpS in qpsS
-
-            pS, wS = qpS
-                x=cartesian(pS)
-            r += wS* wiltonints(r1,r2,r3,x,t1,t2,Val{3})[1][2]
-
-        end
-
-    #end
-
-    return r
-
-end
-
-quadrule4dtriang(v1,v2,v3,v1,v2,v3,0.0,0.4)
-
-
-inttriangtimezero(v2,v3,v1,1.1)
-
-quadrule4dtriang(v1,v2,v3,v1,v2,v3,1.1,1,3)
+#quadrule4dtriang(v1,v2,v3,v1,v2,v3,1.1,1,3)
 
 #testare integrale generale 4d zero time 
 
