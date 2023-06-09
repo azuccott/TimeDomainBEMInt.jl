@@ -1,11 +1,3 @@
-module inttriangleR4
-
-using LinearAlgebra
-
-export contour, inttrianglenegativepowers
-
-include("contour2.jl")
-
 
 function segintsg(a, b, p, h, m)
 
@@ -239,4 +231,4 @@ v3 = point(0.0, 1.0, 0.0)
 
 
 inttrianglenegativepowers(v1,v2,v3,v4,2.9,4.4)=#
-end #module
+

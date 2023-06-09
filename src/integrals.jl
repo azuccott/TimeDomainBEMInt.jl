@@ -1,10 +1,3 @@
-using WiltonInts84
-
-using LinearAlgebra
-
-using BlockArrays
-
-using Polynomials
 
 #corregere val{7} nelle wilton 
 #correggere i diviso 6
