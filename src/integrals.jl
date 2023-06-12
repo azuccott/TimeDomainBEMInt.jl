@@ -1,9 +1,4 @@
 
-#corregere val{7} nelle wilton 
-#correggere i diviso 6
-#valutare operazioni da fare in testa in inttriangtriang, ad esempio calcolare superfici o lunghezze degli edge
-#riassumere espressioni composte e che si ripetono
-#problema di t=0 per coinc triang (definito per t=0 o per t>10^-6, nel mezzo da nan)
 function intpointtriangle(r1,r2,r3,rp,S,t1,t2)
     maxdist=norm(r1-rp)+norm(r1-r2)+norm(r2-r3)+norm(r1-r3)
     a=0.0
@@ -144,7 +139,7 @@ function inttriangletriangle(a1,a2,a3,b1,b2,b3,t1,t2)
             s[1]*intlinetriangle(a2,a3,b1,b2,b3,Sb,t1,t2)+s[2]*intlinetriangle(a3,a1,b1,b2,b3,Sb,t1,t2)+
             (1-s[1]-s[2])*intlinetriangle(a1,a2,b1,b2,b3,Sb,t1,t2))
         
-        return I
+        return I/6
 end
 
 
@@ -228,83 +223,6 @@ function intcoinctriangles(a1,a2,a3,t1,t2)
     return I
 end
 
-#intcoinctriangles(v1′,v2′,v3′,0,0.4)
-#quadrule4dtriang(v1′,v2′,v3′,v1′,v2′,v3′,0.0000000000001,0.4)
-
-
-
-#=test da cancellare
-v3 = point( 0.0, 0.0, 0.0) #r3 #attenzione hai cambiato questi punti rispetto allaltro file
-
-v1 = point(1.0, 0.0, 0.0) #r1
-
-v2 = point( 0.0, 1.0, 0.0) #r2
-
-
-v3′ = point(3.622579672754069, 4.478943189230791, -8.174104502769225) #r3'
-
-v1′ =point(5.370603720688417, 3.683103988470699, -7.58889719823895) #r1'
-
-v2′ = point( 3.851213402629311, 2.5141835154553185, -8.879585383227141) #r2'
-=#
-
-#intcoinctriangles(v1,v2,v3,0.00000001,0.7)
-#quadrule4dtriang(v1,v2,v3,v1,v2,v3,0.0,0.7)
-
-#wiltonints(v1,v2,v3,v4,Val{1})[1][2]
-
-#v4=point(0.25,0.25,0.0)
-
-
-#inttriangletriangleadjacent(v1,v2,v3,v1,v2,v3,0.1,30.0)
-
-function quadrule2dtriang(r1,r2,r3,rp,t2)
-    T = simplex(r1, r2, r3)
-
-
-    #testing quadrature rules
-
-    qpsT = quadpoints(T,13)
-
-    function f(p,rc)
-
-        x = cartesian(p)
-
-
-        R = norm(x-rc)
-
-
-        if   R ≤ t2
-
-            return 1/R
-
-        else
-
-            return zero(R)
-
-        end
-
-    
-
-        end
-
-    #result 4d quadrule
-
-    r = 0.0
-
-    for qpT in qpsT
-
-        pT, wT = qpT
-
-            r +=wT * f(pT,rp)
-
-
-    end
-
-    return r
-
-end
-
 
 function inttriangtimezero(r1,r2,r3,t2) #definisce lintegral wiltonint di 1/R fra un triangolo e il suo vertice 3 (terzo argomento)
     l12=norm(r2-r1)
@@ -359,67 +277,6 @@ function inttriangtimezero(r1,r2,r3,t2) #definisce lintegral wiltonint di 1/R fr
 end
 
 
-#quadrule4dtriang(v1,v2,v3,v1,v2,v3,0.0,0.4)
-
-
-#inttriangtimezero(v2,v3,v1,1.1)
-
-#quadrule4dtriang(v1,v2,v3,v1,v2,v3,1.1,1,3)
-
-#testare integrale generale 4d zero time 
-
         
 
-function quadrulelineline(r1,r2,r3,rp,t1,t2)
-    T = simplex(r1, r2)
-    S = simplex(r3, rp)
-
-    #testing quadrature rules
-
-    qpsT = quadpoints(T,50)
-
-    qpsS = quadpoints(S,50)
-
-    function f(p,q)
-
-        x = cartesian(p)
-
-        y = cartesian(q)
-
-        R = norm(x-y)
-
-
-            if   t1 ≤ R ≤ t2
-
-                return 1/R
-
-            else
-
-                return zero(R)
-
-            end
-
-        end
-
-    #result 4d quadrule
-
-    r = 0.0
-
-    for qpT in qpsT
-
-        pT, wT = qpT
-
-        for qpS in qpsS
-
-            pS, wS = qpS
-
-            r += wS * wT * f(pT,pS)
-
-        end
-
-    end
-
-    return r
-
-end
 
