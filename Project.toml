@@ -11,6 +11,7 @@ Polynomials = "f27b6e38-b328-58d1-80ce-0feddd5e7a45"
 WiltonInts84 = "a3e2863e-c0ee-5ff6-a523-307a4cdc8724"
 
 [compat]
+WiltonInts84 = "0.2"
 julia = "1"
 
 [extras]
